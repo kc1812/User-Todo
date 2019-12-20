@@ -1,0 +1,66 @@
+{
+    "parser": "babel-eslint",
+    "env": {
+        "node": true,
+        "es6": true,
+        "mocha": true
+    },
+    "globals": {
+        "expect": true,
+        "sinon": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "arrowFunctions": true,
+            "binaryLiterals": true,
+            "blockBindings": true,
+            "classes": true,
+            "defaultParams": true,
+            "destructuring": true,
+            "forOf": true,
+            "generators": true,
+            "modules": true,
+            "objectLiteralComputedProperties": true,
+            "objectLiteralDuplicateProperties": true,
+            "objectLiteralShorthandMethods": true,
+            "objectLiteralShorthandProperties": true,
+            "octalLiterals": true,
+            "regexUFlag": true,
+            "regexYFlag": true,
+            "spread": true,
+            "superInFunctions": true,
+            "templateStrings": true,
+            "unicodeCodePointEscapes": true,
+            "globalReturn": true,
+            "experimentalObjectRestSpread": true
+        }
+    },
+    "plugins": [
+        "node"
+    ],
+    "rules": {
+        "no-var": 2,
+        "prefer-const": 1,
+        "no-shadow": 2,
+        "no-redeclare": 2,
+        "no-proto": 2,
+        "no-self-assign": 2,
+        "no-fallthrough": 2,
+        "use-isnan": 2,
+        "no-unreachable": 2,
+        "no-unsafe-finally": 2,
+        "no-delete-var": 2,
+        "no-unused-vars": 1,
+        "no-invalid-regexp": 2,
+        "no-this-before-super": 2,
+        "constructor-super": 2,
+        "no-const-assign": 2,
+        "no-dupe-class-members": 2,
+        "no-new-symbol": 2,
+        "vars-on-top": 2,
+        "semi": 2,
+        "no-useless-rename": 2
+    }
+}

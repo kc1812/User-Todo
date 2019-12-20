@@ -1,0 +1,34 @@
+{
+  "db": {
+    "test": {
+      "host": "localhost",
+      "port": 3306,
+      "database": "test_todo",
+      "user": "root",
+      "password": "root",
+      "dialect": "mysql"
+    },
+    "prod": {
+      "host": "localhost",
+      "port": 3306,
+      "database": "prod_todo",
+      "user": "root",
+      "password": "root",
+      "dialect": "mysql"
+    },
+    "dev": {
+      "host": "localhost",
+      "port": 3306,
+      "database": "dev_todo",
+      "user": "root",
+      "password": "root",
+      "dialect": "mysql"
+    }
+  },
+  "port": {
+    "test": 3333,
+    "prod": 3000,
+    "dev": 3000
+  },
+  "secretKey": "12345-67890-09876-54321"
+}

@@ -1,0 +1,50 @@
+{
+  "name": "gateway",
+  "version": "1.0.0",
+  "description": "gateway",
+  "main": "server.js",
+  "scripts": {
+    "start": "set NODE_ENV=dev&&nodemon ./server/server.js --exec babel-node",
+    "build": "babel server -d build",
+    "clean": "rm -rf build",
+    "rebuild": "npm run clean && npm run build ",
+    "prod": "set NODE_ENV=prod&&node ./build/server.js",
+    "forever:start": "set NODE_ENV=prod&&forever start -a ./build/server.js",
+    "test": "mocha server/**/*.test.js",
+    "test-watch": "nodemon --exec 'npm test'"
+  },
+  "engines": {
+    "node": ">=v8.4.0"
+  },
+  "keywords": [],
+  "author": "Asif",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "forever": "^0.15.3",
+    "helmet": "^3.8.1",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.4",
+    "mongoose": "^4.11.9",
+    "morgan": "^1.8.2",
+    "mysql2": "^2.0.2",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "sequelize": "^5.21.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^7.2.3",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-register": "^6.26.0",
+    "eslint": "^4.5.0",
+    "eslint-plugin-node": "^5.1.1",
+    "expect": "^1.20.2",
+    "mocha": "^3.5.0",
+    "nodemon": "^1.11.0"
+  }
+}
