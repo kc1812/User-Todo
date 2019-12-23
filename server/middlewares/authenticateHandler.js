@@ -3,7 +3,7 @@ import LocalPassport from 'passport-local';
 import JwtPassport from 'passport-jwt';
 import jwt from 'jsonwebtoken';
 import env from '../utils/envHandler';
-import { getUserByUsername, getUser } from "../modules/Users/Handler";
+import { getUserByUsername, getUserById } from "../modules/Users/Handler";
 
 const secretKey = env().secretKey;
 const LocalStrategy = LocalPassport.Strategy;
@@ -13,15 +13,15 @@ const ExtractJwt = JwtPassport.ExtractJwt;
 exports.localPassport = passport.use(new LocalStrategy(
   (username, password, done) => {
     getUserByUsername(username)
-      .then(data => {
-        const user = data.data;
+      .then(result => {
+        const user = result.data;
         return user.validPassword(password);
       })
-      .then(data => {
-        const user = data.user;
-        const valid = data.valid;
+      .then(result => {
+        const user = result.user;
+        const valid = result.valid;
         if (!valid) {
-          return done({ statusCode: 400, message: 'Invalid Password!' }, false);
+          return done({ statusCode: 422, message: 'Invalid Password!', error: null }, false);
         }
         return done(null, user);
       })
@@ -44,9 +44,9 @@ opts.secretOrKey = secretKey;
 exports.jwtPassport = passport.use(new JwtStrategy(opts,
   (jwt_payload, done) => {
     // console.log("JWT payload: ", jwt_payload);
-    getUser(jwt_payload.id)
-      .then(data => {
-        return done(null, data.message);
+    getUserById(jwt_payload.id)
+      .then(result => {
+        return done(null, result.data);
       })
       .catch(err => {
         return done(err, false);

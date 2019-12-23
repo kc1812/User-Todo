@@ -1,4 +1,4 @@
-import { saveUserDb, getUserDb, getAllUserDb, getUserFromUserameDb } from "./Model";
+import { saveUserDb, getUserByIdDb, getAllUserDb, getUserByUsernameDb } from "./Model";
 
 const saveUser = userObj => {
   return new Promise((resolve, reject) => {
@@ -7,12 +7,14 @@ const saveUser = userObj => {
         if (user) {
           resolve({
             statusCode: 201,
-            message: "Created"
+            message: "User Successfully Registered",
+            data: null
           });
         } else {
           reject({
             statusCode: 500,
-            message: "Internel server error, while creating user"
+            message: "Internel server error, while creating user",
+            error: null
           });
         }
       })
@@ -33,12 +35,14 @@ const getAllUser = () => {
         if (user) {
           resolve({
             statusCode: 200,
-            message: user
+            message: "",
+            data: user
           });
         } else {
           reject({
             statusCode: 500,
-            message: "Internel server error, while creating user"
+            message: "Internel server error, while creating user",
+            error: null
           });
         }
       })
@@ -52,19 +56,21 @@ const getAllUser = () => {
   });
 };
 
-const getUser = (userId) => {
+const getUserById = (userId) => {
   return new Promise((resolve, reject) => {
-    getUserDb(userId)
+    getUserByIdDb(userId)
       .then(user => {
         if (user) {
           resolve({
             statusCode: 200,
-            message: user
+            data: user,
+            message: ""
           });
         } else {
           reject({
             statusCode: 500,
-            message: "Internel server error, while creating user"
+            message: "Internel server error, while creating user",
+            error: null
           });
         }
       })
@@ -79,16 +85,18 @@ const getUser = (userId) => {
 };
 const getUserByUsername = (username) => {
   return new Promise((resolve, reject) => {
-    getUserFromUserameDb(username)
+    getUserByUsernameDb(username)
       .then(user => {
         if (user) {
           resolve({
             statusCode: 200,
-            data: user
+            data: user,
+            message: "User Found"
           });
         } else {
           reject({
-            statusCode: 400,
+            statusCode: 404,
+            error: null,
             message: "User Not Found"
           });
         }
@@ -106,4 +114,4 @@ const getUserByUsername = (username) => {
 };
 
 
-module.exports = { saveUser, getAllUser, getUser, getUserByUsername };
+module.exports = { saveUser, getAllUser, getUserById, getUserByUsername };

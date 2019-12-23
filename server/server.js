@@ -9,7 +9,7 @@ import errorHandler from "./middlewares/errorHandler";
 import routes from "./routes";
 import logger from "morgan";
 import helmet from "helmet";
-import passport from "passport";
+import passport from 'passport';
 
 // Common imports
 import bodyParser from "body-parser";
@@ -30,6 +30,7 @@ app.use(bodyParser.json({ limit: "50mb" }));
 // for parsing the url encoded data using qs library
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
+//for using passport strategies
 app.use(passport.initialize());
 
 // Load the routes
