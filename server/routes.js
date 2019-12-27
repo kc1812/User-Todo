@@ -3,7 +3,8 @@ const router = express.Router();
 
 // Import all the custom routes
 const routes = [
-  require("./modules/Users/Router")
+  require("./modules/Users/Router"),
+  require("./modules/Todo/Router")
 ];
 
 export default app => {
