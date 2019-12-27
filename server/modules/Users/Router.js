@@ -1,6 +1,6 @@
 import { getAllUser, getUserById, saveUser, getUserByUsername } from "./Handler";
 import { verifyUserLocal, getToken, verifyUserJwt } from "../../middlewares/authenticateHandler";
-import { bodyValidator } from "../../Validators/users";
+import { userBodyValidator } from "../../Validators/users";
 
 export default router => {
 
@@ -15,7 +15,7 @@ export default router => {
       });
     }
   });
-  router.post("/register", bodyValidator, function (req, res) {
+  router.post("/register", userBodyValidator, function (req, res) {
     const user = req.body;
     getUserByUsername(user.username)
       .then(result => {
@@ -74,7 +74,7 @@ export default router => {
       });
     }
   });
-  router.post("/login", bodyValidator, verifyUserLocal, function (req, res, next) {
+  router.post("/login", userBodyValidator, verifyUserLocal, function (req, res, next) {
 
     const expiresIn = 3600;
     const token = getToken({ id: req.user.id, username: req.user.username }, expiresIn);

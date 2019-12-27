@@ -1,4 +1,4 @@
-const bodyValidator = (req, res, next) => {
+const userBodyValidator = (req, res, next) => {
 
   const username = req.body.username;
   const password = req.body.password;
@@ -34,5 +34,5 @@ const bodyValidator = (req, res, next) => {
 };
 
 module.exports = {
-  bodyValidator
+  userBodyValidator
 };

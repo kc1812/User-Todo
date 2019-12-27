@@ -41,7 +41,7 @@ const getAllUser = () => {
         } else {
           reject({
             statusCode: 500,
-            message: "Internel server error, while creating user",
+            message: "Internel server error, while fetching all users",
             error: null
           });
         }
@@ -60,6 +60,7 @@ const getUserById = (userId) => {
   return new Promise((resolve, reject) => {
     getUserByIdDb(userId)
       .then(user => {
+        // console.log(1234, user);
         if (user) {
           resolve({
             statusCode: 200,
@@ -68,13 +69,14 @@ const getUserById = (userId) => {
           });
         } else {
           reject({
-            statusCode: 500,
-            message: "Internel server error, while creating user",
+            statusCode: 404,
+            message: "User Not Found",
             error: null
           });
         }
       })
       .catch(err => {
+
         reject({
           statusCode: 500,
           message: "Internel server error",
